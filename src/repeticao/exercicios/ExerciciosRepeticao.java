@@ -13,6 +13,7 @@ public class ExerciciosRepeticao {
 //        valoresInteiros();
 //        valorDesconto();
 //        numerosPares();
+//        restauranteUniversitario();
     }
     
 //    exercicio 1
@@ -133,5 +134,133 @@ public class ExerciciosRepeticao {
     }
     
 //    exercicio 4
-    
+    static void restauranteUniversitario(){
+        
+        Scanner scanner = new Scanner(System.in);
+        
+//        Controle de sistema e contagem
+        int totalAlunos = 0;
+        int escolha;
+        boolean continuar = true;
+        
+//        Contagem de grupos
+        int menosQueDez = 0; // Grupo A
+        int entreDezEQuinze = 0; // Grupo B
+        int maisQueQuinze =0; // Grupo C
+        
+        System.out.println("--- Pesquisa Restaurante Universitario---");
+        
+        
+//        Enquanto "continuar" continuar sendo verdadeiro ele vai rodar
+        while (continuar){
+        
+            System.out.println("Qual das opcoes deseja seguir?");
+            System.out.println("1- Registrar nova quantidade de vezes que voce foi ao restaurante");
+            System.out.println("2- Mostrar porcentagem e finalizar o programa");
+            
+            
+//            Parte do menu onde damos o input e ele verifica se tem um numero
+            if (scanner.hasNextInt()){
+                
+                escolha = scanner.nextInt();
+                
+//                utilizada para limpar o buffer do enter que você deu para confirmar sua escolha
+                scanner.nextLine();
+                
+            } else {
+            
+                System.out.println("Entrada inválida.");
+                scanner.nextLine();
+                continue; // pra continuar o loop
+                
+            }
+            
+//            Aqui é onde filtramos o que o usuario escolheu
+//            Como 1 ou 2. Qualquer outra escolha dará um "erro"
+            
+            switch(escolha){
+            
+                case 1:
+                    System.out.println("Quantas vezes voce visitou o restaurante universitario?");
+                    
+                    
+//                    Verifica se é um numero inteiro
+                    if (scanner.hasNextInt()){
+                    
+                        int vezesRestaurante = scanner.nextInt();
+                        scanner.nextLine();
+                        
+                        totalAlunos++;     // Aqui adicionamos 1 ao total de alunos que participaram                   
+                        
+                        
+//                        Aqui é parar separar o aluno em um dos 3 tipos de grupo que criei
+                        if (vezesRestaurante < 10){
+                            
+//                            Grupo A com menos de 10 visitas
+                            menosQueDez++;
+                        
+                        } else if (vezesRestaurante <= 15){
+                        
+//                            Grupo B ja sabemos que não é < que 10, logo, ele é >= 10
+//                            agora so vemos se ele é <= a 15
+                            entreDezEQuinze++;
+                            
+                        } else {
+                        
+//                            Grupo C entramos se não for nenhuma das 2 opções acima
+//                            que é a mesma coisa que ele ser < que 15
+                            maisQueQuinze++;
+                            
+                        }
+                        
+                    } else { 
+                    
+                        System.out.println("Quantidade invalida.");
+                        scanner.nextLine();
+                        
+                    }
+                    break;
+            
+                case 2: 
+                    
+                    System.out.println("---Programa finalizado---");
+                    
+                    
+//                    Verifica se tem numeros para calcular 
+                    if (totalAlunos == 0){
+                    
+                        System.out.println("Nenhum aluno foi entrevistado.");
+                        
+                    } else {
+                        
+//                        CALCULO FINAL
+//                        (double) é para converter para double os ints ali dentro
+//                        e não zerar. (ex: 0.3 -> 0)
+                        
+                        double porcA = (double) menosQueDez / totalAlunos * 100;
+                        double porcB = (double) entreDezEQuinze / totalAlunos * 100;
+                        double porcC = (double) maisQueQuinze / totalAlunos * 100;
+                        
+//                        Impressão dos resultados finais
+                        System.out.println("Total de alunos entrevistados: " + totalAlunos);
+                        System.out.println("a) Alunos com menos de 10 visitas: \n" + porcA + "%");
+                        System.out.println("a) Alunos com 10 a 15 visitas: \n" + porcB + "%");
+                        System.out.println("a) Alunos com mais de 15 visitas: \n" + porcC + "%");
+                        
+                    }
+                    
+                    continuar = false; //programa parar de funcionar
+                    break;
+                  
+                    // caso escolham uma opção que não existe
+                default:
+                    
+                    System.out.println("Opcao invalida. Apenas 1 ou 2 funciona.");
+                    
+                    break;
+                    
+            }
+        } 
+        scanner.close();
+    }
 }
