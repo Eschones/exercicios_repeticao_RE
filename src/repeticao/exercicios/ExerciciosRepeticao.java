@@ -14,6 +14,7 @@ public class ExerciciosRepeticao {
 //        valorDesconto();
 //        numerosPares();
 //        restauranteUniversitario();
+        valorDeA();
     }
     
 //    exercicio 1
@@ -35,8 +36,7 @@ public class ExerciciosRepeticao {
 //            decide se vai ser negativo ou positivo
             boolean positivoNegativo = gerador.nextBoolean();
             
-            int numeroRandom;
-            
+            int numeroRandom;            
             
 //            if (positivoNegativo == false &&escolheNumero != 0)
             if (!positivoNegativo && escolheNumero != 0){
@@ -262,5 +262,42 @@ public class ExerciciosRepeticao {
             }
         } 
         scanner.close();
+    }
+    
+//    exercicio 5
+    static void valorDeA(){
+    
+        Random gerador = new Random();
+        
+//        O "+ 1" garante que o N sempre será maior que 0
+//        Será um valor aleatório entre 1 e 50
+        int N = gerador.nextInt(50) + 1;
+        
+        double valorA = 0.0;
+        
+        System.out.println("O numero atribuido aleatoriamente para N eh: " + N);
+        System.out.println("---Calculando agora utilizando a formula---");
+        
+        for (int i = 1; i <= N; i++){
+        
+//            Numerador: N - i + 1 (Começa em N e termina em 1)
+            int numerador = N - i + 1;
+            
+//            Denominador: i (começa em 1 e terminar em N)
+            int denominador = i;
+            
+//            O termo atual da série (ex: 5/1, 4/2, 3/3)
+            double termo = (double) numerador / denominador;
+            
+//            Adiciona o termo ao valor total de A
+            valorA += termo;
+            
+//            Imprimindo cada termo
+            System.out.println("Termo = " + "\n Numero: " + i + "\n Numerador: " + numerador + "\n Denominador: " + denominador);
+            
+        }
+        
+        System.out.println("O valor final de A eh: " + valorA);
+        
     }
 }
