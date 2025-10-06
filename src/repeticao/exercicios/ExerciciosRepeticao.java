@@ -14,7 +14,8 @@ public class ExerciciosRepeticao {
 //        valorDesconto();
 //        numerosPares();
 //        restauranteUniversitario();
-        valorDeA();
+//        valorDeA();
+//        alunoAlturaIdade();
     }
     
 //    exercicio 1
@@ -299,5 +300,76 @@ public class ExerciciosRepeticao {
         
         System.out.println("O valor final de A eh: " + valorA);
         
+    }
+    
+//    exercicio 6
+    static void alunoAlturaIdade(){
+        
+        Random gerador = new Random();
+        
+//        minimo + gerador.nextInt(Máximo - mínimo + 1)
+        int alturaCm;
+        int idade;
+        
+//        Variaveis letra A
+        double somaIdade = 0.0;
+        int contadorA = 0;
+        
+//        Variaveis letra B
+        double somaAltura = 0.0;
+        int contadorB = 0;
+        
+//        Médias
+        double mediaAltura = 0.0;
+        double mediaIdade = 0.0;
+        
+        for (int i = 0; i < 45 ; i++){
+            
+            idade = 16 + gerador.nextInt(9);
+            alturaCm = 160 + gerador.nextInt(21);
+            
+//            transformando Cm em Metros
+            double altura = (double) alturaCm / 100;
+            
+            System.out.println("Aluno " + (i + 1) + "\n Idade: " + idade + "\n Altura: " + altura);
+            
+            if (altura < 1.7){
+            
+                 somaIdade += idade;
+                 contadorA++;
+                
+            }
+            
+            if (idade > 20){
+            
+                somaAltura += altura;
+                contadorB++;
+            
+            }
+            
+        }
+        
+//        Verifica se há individuos para realizar a conta, caso não, dará uma resposta        
+        if (contadorA > 0){
+            
+            mediaIdade = somaIdade / contadorA;
+            System.out.println("a) Idade media dos alunos com altura menor que 1,70m: \n" + mediaIdade);
+            
+        } else {
+        
+            System.out.println("a) Nao houve alunos com altura menor que 1,70m para calcular a media de idade");
+            
+        }
+        
+        if (contadorB > 0){
+            
+            mediaAltura = somaAltura / contadorB;
+            System.out.println("b) Altura media dos alunos com mais de vinte anos: \n" + mediaAltura);
+            
+        } else {
+        
+            System.out.println("a) Nao houve alunos com mais de vinte anos para calcular a media de altura.");
+            
+        }        
     }
 }
