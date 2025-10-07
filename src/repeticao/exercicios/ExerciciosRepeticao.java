@@ -99,7 +99,7 @@ public class ExerciciosRepeticao {
                 System.out.println(nome + " " + valorCompra + " " + valorDescontado + " " + valorFinal);
         }
         
-                System.out.println("A loja arrecadou um total de: " + valorLoja);
+            System.out.println("A loja arrecadou um total de: " + valorLoja);
         
         scanner.close();
     }
